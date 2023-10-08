@@ -1,0 +1,22 @@
+(function () { 
+	try { 
+		throw new Error(); 
+	} catch (x) { 
+		var x = 1, y = 2; 
+		console.log(x); 
+	} 
+	
+	console.log(x); 
+	console.log(y);
+})();
+
+output:
+    1
+    undefined
+    2
+
+console.log(x) inside the catch block logs the locally declared x, which is 1.
+
+Outside of the catch block, you attempt to log x. Since there's a variable x declared within the function scope but it hasn't been assigned a value, it logs undefined.
+
+You also attempt to log y outside of the catch block. The variable y was declared within the function scope and is accessible both inside and outside the catch block, so it logs 2.
